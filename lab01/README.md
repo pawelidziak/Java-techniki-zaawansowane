@@ -1,4 +1,4 @@
-#Instructions
+# Instructions
 
 1. Compile java files
 2. Run ManagerImpl (just one)
