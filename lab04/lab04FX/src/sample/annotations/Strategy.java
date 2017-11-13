@@ -6,7 +6,8 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 @Retention(RetentionPolicy.RUNTIME)
-@Target(ElementType.METHOD) //can use in method only.
-public @interface Hard {
+@Target(ElementType.TYPE) //on class level
 
+public @interface Strategy {
+    String name() default "";
 }

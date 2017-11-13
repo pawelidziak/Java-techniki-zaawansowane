@@ -51,6 +51,7 @@ public class Controller implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         createBoard();
+        findPackagesWithClasses(Configuration.PATH_TO_FOLDER);
         loadClasses();
         initSizeCB();
         initLevelCB();
@@ -117,7 +118,11 @@ public class Controller implements Initializable {
     }
 
     private int moves = 0;
+
     private boolean checkWin(Pair pair, String s) {
+        if (pair == null) {
+            return false;
+        }
         int x = pair.getRow();
         int y = pair.getColumn();
 
@@ -129,10 +134,9 @@ public class Controller implements Initializable {
             button.setDisable(true);
         }
 
-        System.out.println( s + " " + moves);
         moves++;
 
-        if(moves == (Math.pow(BOARD_SIZE, 2) - 1)){
+        if (moves == (Math.pow(BOARD_SIZE, 2) - 1)) {
             System.out.println("DRAW");
             t_winner.setText("DRAW");
             gp_board.setDisable(true);
@@ -206,14 +210,9 @@ public class Controller implements Initializable {
         int topY2 = x + y;
         if (topY2 > BOARD_SIZE - 1) topY2 = BOARD_SIZE - 1;
 
-//        if (s.equals(Configuration.PLAYER_MOVE)) {
-//            System.out.println("X: " + x + " Y: " + y);
-//            System.out.println("P(" + topX2 + ", " + topY2 + ")");
-//        }
         for (int i = topX2; i < BOARD_SIZE; i++) {
             if (Objects.equals(board[i][topY2], s)) {
                 diag2++;
-//                if (s.equals(Configuration.PLAYER_MOVE)) System.out.println("dodalem, i: " + i + " j: " + topY2);
             } else diag2 = 0;
             if (diag2 == STEPS_TO_WIN) {
                 System.out.println(s + " WON! diag X");
@@ -240,13 +239,11 @@ public class Controller implements Initializable {
         Class returnClass = null;
 
         for (Class c : loadedClasses) {
-            Annotation annos = switchStrategy(c, STRATEGY);
+            Annotation annos = c.getDeclaredAnnotation(Strategy.class);
             if (annos != null) {
-                try {
+                Strategy strategy = (Strategy) annos;
+                if(strategy.name().equals(STRATEGY.toString())){
                     returnClass = c;
-                    break;
-                } catch (Exception e) {
-                    e.printStackTrace();
                 }
             }
         }
@@ -258,46 +255,22 @@ public class Controller implements Initializable {
         Method returnMethod = null;
         Method[] methods = c.getMethods();
         for (Method method : methods) {
-            // sprawdza adnotacje, jesli jest zgodna z LEVEL to zwracam metodę
-            Annotation annos = switchLevel(method, LEVEL);
+            // sprawdzam adnotacje, jesli jest zgodna z LEVEL to zwracam metodę
+
+            Annotation annos = method.getDeclaredAnnotation(Level.class);
             if (annos != null) {
-                try {
+                Level level = (Level) annos;
+                if(level.name().equals(LEVEL.toString())){
                     returnMethod = method;
-                    break;
-                } catch (Exception e) {
-                    e.printStackTrace();
                 }
             }
         }
         return returnMethod;
     }
 
-    private Annotation switchLevel(Method method, LEVEL_ENUM level) {
-        switch (level) {
-            case EASY:
-                return method.getAnnotation(Easy.class);
-            case MID:
-                return method.getAnnotation(Mid.class);
-            case HARD:
-                return method.getAnnotation(Hard.class);
-        }
-        return null;
-    }
-
-    private Annotation switchStrategy(Class c, STRATEGY_ENUM strategy) {
-        switch (strategy) {
-            case DEFENSE:
-                return c.getAnnotation(Defense.class);
-            case ATTACK:
-                return c.getAnnotation(Attack.class);
-        }
-        return null;
-    }
-
     // METHODS FOR CLASS LOADER
 
     private void loadClasses() {
-        findPackagesWithClasses(Configuration.PATH_TO_FOLDER);
         try {
             File customElementsDir = new File(Configuration.PATH_TO_FOLDER);
             URL url = customElementsDir.toURI().toURL();
@@ -305,7 +278,7 @@ public class Controller implements Initializable {
             URLClassLoader myClassLoader = new URLClassLoader(urls);
 
             for (String s : packageWithClassList) {
-                Class c = myClassLoader.loadClass("sample." + s);
+                Class c = myClassLoader.loadClass(s);
                 loadedClasses.add(c);
             }
 
@@ -320,7 +293,7 @@ public class Controller implements Initializable {
         for (File file : fList) {
             if (file.isFile()) {
                 String packageWithClass = file.toString().replace(Configuration.PATH_TO_FOLDER, "").replace(".class", "").replace("\\", ".");
-                packageWithClassList.add(Configuration.NAME_OF_FOLDER + "." + packageWithClass);
+                packageWithClassList.add(packageWithClass);
             } else if (file.isDirectory()) {
                 findPackagesWithClasses(file.getAbsolutePath());
             }

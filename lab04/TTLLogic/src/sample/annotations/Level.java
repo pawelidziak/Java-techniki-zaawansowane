@@ -6,6 +6,8 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 @Retention(RetentionPolicy.RUNTIME)
-@Target(ElementType.TYPE) //on class level
-public @interface Defense {
+@Target(ElementType.METHOD) //on class level
+
+public @interface Level {
+    String name() default "";
 }
