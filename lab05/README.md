@@ -12,3 +12,4 @@ The application represents simple connection to the database with using JDBC dri
     - cancel - update field in DB (changing status to "canceled")
 - Possibility of select hour of reservation
 
+![alt DB schema image](https://github.com/pawelidziak/Java-techniki-zaawansowane/blob/master/lab05/db_schema_image.png)
