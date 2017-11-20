@@ -1,10 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TitledPane?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="692.0" prefWidth="572.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Button layoutX="274.0" layoutY="175.0" mnemonicParsing="false" onAction="#createTables" text="Button" />
+      <Label layoutX="14.0" layoutY="22.0" text="Login as:" />
+      <ComboBox fx:id="cb_clients" layoutX="73.0" layoutY="18.0" prefHeight="25.0" prefWidth="189.0" />
+      <Button fx:id="b_login" layoutX="277.0" layoutY="18.0" mnemonicParsing="false" onAction="#login" text="Login" />
+      <Button fx:id="b_logout" layoutX="332.0" layoutY="18.0" mnemonicParsing="false" onAction="#logout" text="Logout" />
+      <TitledPane fx:id="tp_operations" layoutX="14.0" layoutY="76.0" prefHeight="600.0" prefWidth="554.0" text="Client operations">
+         <content>
+            <AnchorPane prefHeight="521.0" prefWidth="521.0">
+               <children>
+                  <ComboBox fx:id="cb_services" layoutX="11.0" layoutY="35.0" prefHeight="25.0" prefWidth="311.0" />
+                  <Label layoutX="11.0" layoutY="10.0" text="Select service:" />
+                  <Label layoutX="10.0" layoutY="244.0" text="Select booking hour:" />
+                  <ComboBox fx:id="cb_hour" layoutX="139.0" layoutY="240.0" prefHeight="25.0" prefWidth="130.0" />
+                  <Button fx:id="b_make_reservation" disable="true" layoutX="11.0" layoutY="277.0" mnemonicParsing="false" onAction="#makeReservation" prefHeight="25.0" prefWidth="257.0" text="MAKE A RESERVATION" />
+                  <Label layoutX="218.0" layoutY="316.0" text="Your orders:" />
+                  <ListView fx:id="lw_reservations" layoutX="10.0" layoutY="333.0" prefHeight="189.0" prefWidth="502.0" />
+                  <Button fx:id="b_cancel_reservation" layoutX="264.0" layoutY="530.0" mnemonicParsing="false" onAction="#cancelReservation" prefHeight="25.0" prefWidth="248.0" text="CANCEL ORDER" />
+                  <Label layoutX="11.0" layoutY="127.0" text="Selected services:" />
+                  <Button layoutX="333.0" layoutY="35.0" mnemonicParsing="false" onAction="#addService" text="Add service" />
+                  <Button fx:id="b_remove_service" layoutX="433.0" layoutY="177.0" mnemonicParsing="false" onAction="#removeService" text="Remove service" />
+                  <ListView fx:id="lw_services" layoutX="10.0" layoutY="149.0" prefHeight="80.0" prefWidth="409.0" />
+                  <Label layoutX="276.0" layoutY="244.0" prefHeight="17.0" prefWidth="221.0" text="If hour doesn't exist it means it's taken" />
+                  <Label layoutX="281.0" layoutY="281.0" text="Total price:" />
+                  <Text fx:id="t_services_price" layoutX="348.0" layoutY="295.0" strokeType="OUTSIDE" strokeWidth="0.0" text="None" />
+                  <ComboBox fx:id="cb_wheel_size" layoutX="120.0" layoutY="83.0" prefHeight="25.0" prefWidth="130.0" />
+                  <Label layoutX="14.0" layoutY="87.0" text="Select sheel size:" />
+               </children>
+            </AnchorPane>
+         </content>
+      </TitledPane>
    </children>
 </AnchorPane>
