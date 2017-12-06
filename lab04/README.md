@@ -1,5 +1,14 @@
 # Lab 04 - Tic Tac Toe
 
+## Polecenie
+Napisz program służący do gry w kółko i krzyżyk człowieka z komputerem na planszy o zadanym rozmiarze (wygrywa zawodnik, który ustawi 5 sąsiadujących ze sobą znaków w rzędzie/kolumnie/po ukosie). Program powinien korzystać z rozszerzeń - skompilowanych klas dostarczających metod do generowania kolejnych ruchów, ładowanych dowolnym ładowaczem ze wskazanego katalogu. Obraną strategię (klasę) oraz poziom trudności (metodę) powinno dać się zmienić w trakcie gry. 
+
+Można założyć, że metody generujące kolejne ruchy mają taką samą listę atrybutów oraz zwracają wartości takiego samego typu  - np. pobierają "planszę" a zwracają współrzędne "strzału". Przy takim założeniu nie da się przeciążać metod (czyli użyć tej samej nazwy metody), ale za to można użyć specjalnie zaprojektowanych adnotacji.
+
+Adnotacje klas powinny dostarczać nazw strategii, zaś adnotacje metod - informacji o poziomie trudności. 
+
+
+
 ## Info
 Zadanie polegało na implementacji gry w kółko i krzyżyk z użyciem adnotacji. Klasy (TTLLogic) wraz z metodami odpowiedzialnymi za logikę gry w kółko i krzyżyk posiadają odpowiednie adnotacje: Strategia (dla klasy), Poziom (dla metody). Natomiast klasy odpowiadające za interakcję z użytkownikiem (lab04FX) wczytują klasy z logiką gry za pomocą URLClassLoader'a, rozpoznają odpowiednie adnotacje oraz wywołują metodę z daną adnotacją.
 
