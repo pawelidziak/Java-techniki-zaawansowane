@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<offer>
+    <offer_id>2</offer_id>
+    <equipment_type>SKI</equipment_type>
+    <equipment_desc>New ski for pros.</equipment_desc>
+    <equipment_location>Zakopane</equipment_location>
+    <price>150</price>
+    <expiry_after_days>20</expiry_after_days>
+    <seller>
+        <first_name>Jan</first_name>
+        <last_name>Kowalski</last_name>
+        <address>Ulica 12, Zakopane</address>
+        <telephone>987-654-321</telephone>
+    </seller>
+</offer>

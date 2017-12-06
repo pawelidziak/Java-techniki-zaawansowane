@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<offer>
+    <offer_id>3</offer_id>
+    <equipment_type>Type</equipment_type>
+    <equipment_desc>Desc</equipment_desc>
+    <equipment_location>Loac</equipment_location>
+    <price>50</price>
+    <expiry_after_days>30</expiry_after_days>
+    <seller>
+        <first_name>name</first_name>
+        <last_name>name 2</last_name>
+        <address>address</address>
+        <telephone>111-111-111</telephone>
+    </seller>
+</offer>
