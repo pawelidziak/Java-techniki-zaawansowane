@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.web.WebView?>
+
+<AnchorPane prefHeight="439.0" prefWidth="917.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+   <children>
+      <TabPane prefHeight="499.0" prefWidth="917.0" tabClosingPolicy="UNAVAILABLE">
+        <tabs>
+          <Tab text="Generate / edit XML">
+            <content>
+              <AnchorPane disable="true" minHeight="0.0" minWidth="0.0" prefHeight="387.0" prefWidth="616.0">
+                     <children>
+                        <TitledPane animated="false" layoutX="153.0" layoutY="14.0" prefHeight="118.0" prefWidth="279.0" text="Load data from XML">
+                          <content>
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                 <children>
+                                    <Label layoutX="14.0" layoutY="18.0" text="The XML file name:" />
+                                    <Button layoutX="11.0" layoutY="51.0" mnemonicParsing="false" onAction="#loadXML" prefHeight="25.0" prefWidth="253.0" text="Load" />
+                                    <ComboBox fx:id="cb_xml_1" layoutX="123.0" layoutY="14.0" prefHeight="25.0" prefWidth="141.0" promptText="Select..." />
+                                 </children>
+                              </AnchorPane>
+                          </content>
+                        </TitledPane>
+                        <TitledPane animated="false" layoutX="459.0" layoutY="15.0" prefHeight="435.0" prefWidth="284.0" text="Offer info">
+                          <content>
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                 <children>
+                                    <Label layoutX="9.0" layoutY="18.0" text="Offer ID:" />
+                                    <Label layoutX="9.0" layoutY="47.0" text="Equipment type:" />
+                                    <Label layoutX="9.0" layoutY="76.0" text="Equipment desc:" />
+                                    <Label layoutX="9.0" layoutY="105.0" text="Location:" />
+                                    <TextField fx:id="offer_id" layoutX="125.0" layoutY="14.0" />
+                                    <TextField fx:id="equipment_type" layoutX="125.0" layoutY="43.0" />
+                                    <TextField fx:id="equipment_desc" layoutX="125.0" layoutY="72.0" />
+                                    <TextField fx:id="equipment_location" layoutX="125.0" layoutY="101.0" />
+                                    <Label layoutX="9.0" layoutY="133.0" text="Price ($):" />
+                                    <Label layoutX="9.0" layoutY="162.0" text="Expiry after (days):" />
+                                    <TextField fx:id="price" layoutX="125.0" layoutY="129.0" />
+                                    <TextField fx:id="expiry_after_days" layoutX="125.0" layoutY="158.0" />
+                                    <Label layoutX="9.0" layoutY="216.0" text="First name:" />
+                                    <TextField fx:id="first_name" layoutX="125.0" layoutY="212.0" />
+                                    <Label layoutX="76.0" layoutY="189.0" text="SELLER INFORMATION:" />
+                                    <Label layoutX="9.0" layoutY="245.0" text="Last name:" />
+                                    <TextField fx:id="last_name" layoutX="124.0" layoutY="241.0" />
+                                    <Label layoutX="9.0" layoutY="274.0" text="Address:" />
+                                    <TextField fx:id="address" layoutX="125.0" layoutY="270.0" />
+                                    <Label layoutX="8.0" layoutY="303.0" text="Telephone:" />
+                                    <TextField fx:id="telephone" layoutX="124.0" layoutY="299.0" />
+                                    <Button layoutX="8.0" layoutY="343.0" mnemonicParsing="false" onAction="#generateEditXML" prefHeight="25.0" prefWidth="266.0" text="Generate / edit XML" />
+                                    <Label layoutX="20.0" layoutY="373.0" text="The file will be saved in: src/oferty/offerID.xml" />
+                                 </children>
+                              </AnchorPane>
+                          </content>
+                        </TitledPane>
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+          <Tab text="Load XML to HTML">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Label layoutX="41.0" layoutY="39.0" text="XML file:" />
+                        <Label layoutX="41.0" layoutY="69.0" text="XSL file:" />
+                        <WebView fx:id="wv_html" layoutY="133.0" prefHeight="338.0" prefWidth="917.0" />
+                        <ComboBox fx:id="cb_xml_2" layoutX="113.0" layoutY="35.0" prefWidth="150.0" promptText="Select..." />
+                        <ComboBox fx:id="cb_xsl" layoutX="113.0" layoutY="65.0" prefWidth="150.0" promptText="Select..." />
+                        <Button layoutX="294.0" layoutY="50.0" mnemonicParsing="false" onAction="#displayXMLwithXSL" prefHeight="25.0" prefWidth="150.0" text="LOAD" />
+                     </children></AnchorPane>
+            </content>
+          </Tab>
+        </tabs>
+      </TabPane>
+   </children>
+</AnchorPane>

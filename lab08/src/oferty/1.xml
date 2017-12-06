@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<offer>
+    <offer_id>1</offer_id>
+    <equipment_type>SNOWBOARD</equipment_type>
+    <equipment_desc>New Snowboard for pros.</equipment_desc>
+    <equipment_location>Wrocław</equipment_location>
+    <price>250</price>
+    <expiry_after_days>15</expiry_after_days>
+    <seller>
+        <first_name>Paweł</first_name>
+        <last_name>Idziak</last_name>
+        <address>Plac Grunwaldu 1, Wrocław</address>
+        <telephone>132-456-789</telephone>
+    </seller>
+</offer>
